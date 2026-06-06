@@ -1,15 +1,24 @@
 package model.entities;
 
+import java.util.IllegalFormatConversionException;
 import java.util.Random;
 
 public class Cartela {
-    Random random = new Random();
 
     int codigo;
     int[][] numeros = new int[5][5];
 
+    Random random = new Random();
+    public static final String RESET = "\u001B[0m";
+    public static final String AZUL = "\u001B[34m";
+
     public Cartela (int codigo) {
         this.codigo = codigo;
+    }
+
+    public Cartela (int codigo, int[][] numeros) {
+        this.codigo = codigo;
+        this.numeros = numeros;
     }
 
     public int[][] gerarCartela(int codigo){
@@ -22,12 +31,26 @@ public class Cartela {
         return numeros;
     }
 
+    public void marcarNaCartela (int pedra) {
+
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                if (pedra == numeros[i][j]) {
+                    //ERROR // System.out.printf("%d\t ", AZUL + numeros[i][j] + RESET);
+                    //TEST
+                    //System.out.println(" * ");;
+                }
+            }
+        }
+    }
+
     @Override
     public String toString () {
 
         StringBuilder sb = new StringBuilder();
 
-        sb.append(" == B I N G O == \n");
+        sb.append(" ==== B I N G O ==== \n");
+        sb.append(String.format(" == cod.: %d= \n", codigo));
 
         for (int[] linha: numeros){
             for (int coluna: linha){

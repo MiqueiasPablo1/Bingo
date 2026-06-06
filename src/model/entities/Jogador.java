@@ -2,17 +2,17 @@ package model.entities;
 
 public class Jogador {
 
-    String name;
+    String nome;
     Cartela cartela;
 
     public Jogador(String name, Cartela cartela) {
-        this.name = name;
+        this.nome = name;
         this.cartela = cartela;
     }
 
-    /*@Override
+    @Override
     public String toString () {
-        return
-    }*/
+        return "Jogador : " + nome;
+    }
 
 }
