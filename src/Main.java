@@ -4,10 +4,14 @@ import model.entities.Jogador;
 public class Main {
     public static void main(String[] args) {
 
-        Cartela cartela = new Cartela(01);
-        Jogador jogador = new Jogador("Joao", cartela.gerarCartela(01).toString());
+        int[][] array = new int[5][5];
 
-        System.out.println(cartela.gerarCartela(01).toString());
+        Cartela cartela = new Cartela(01);
+        cartela.gerarCartela(1);
+
+        Jogador jogador = new Jogador("Joao", cartela);
+
+        System.out.println(cartela.toString());
 
 
     }

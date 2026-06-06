@@ -27,11 +27,11 @@ public class Cartela {
 
         StringBuilder sb = new StringBuilder();
 
-        sb.append("== B I N G O ==");
+        sb.append(" == B I N G O == \n");
 
         for (int[] linha: numeros){
             for (int coluna: linha){
-                sb.append(String.format("%d \t\t", coluna));
+                sb.append(String.format("%d \t", coluna));
             }
             sb.append("\n");
         }
