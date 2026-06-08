@@ -52,9 +52,17 @@ public class Cartela {
         sb.append(" ==== B I N G O ==== \n");
         sb.append(String.format(" == cod.: %d= \n", codigo));
 
-        for (int[] linha: numeros){
-            for (int coluna: linha){
-                sb.append(String.format("%d \t", coluna));
+        for (int i = 0; i < 5; i++){
+            for (int j = 0; j < 5; j++){
+                if (marcados[i][j]){
+                    sb.append(AZUL)
+                    .append(String.format("%d\t", numeros[i][j]))
+                    .append(RESET);
+                    //sb.append(String.format("[%d]\t", numeros[i][j]));
+                }
+                else {
+                    sb.append(String.format("%d\t", numeros[i][j]));
+                }
             }
             sb.append("\n");
         }
