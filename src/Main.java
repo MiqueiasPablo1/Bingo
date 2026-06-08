@@ -14,9 +14,18 @@ public class Main {
         System.out.println(" Digite o nome do jogador: ");
         String nome = scanner.nextLine();
 
-        Cartela cartela = new Cartela(01);
-        cartela.gerarCartela(01);
-        Jogador jogador = new Jogador(nome, cartela);
+            cartela = new Cartela(contador);
+            cartela.gerarCartela(contador);
+            jogador = new Jogador(nome, cartela);
+            sorteador.adicionarJogador(jogador, contador);
+
+            System.out.println("JOGADOR REGISTRADO E CARTELA CRIADA! ");
+
+            System.out.print("Há mais jogadores participantes (S/N)? ");
+            opcao = scanner.nextLine().toUpperCase();
+
+            contador++;
+        } while (opcao.equals("S"));
 
         System.out.println(cartela.toString());
         cartela.marcarNaCartela(sorteador.sortearPedra());
