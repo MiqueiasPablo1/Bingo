@@ -44,6 +44,26 @@ public class Sorteador {
 
     public int sortearPedra(){
         Random random = new Random();
-        return random.nextInt(101);
+        int pedra;
+        boolean repetida;
+
+        do {
+            pedra = random.nextInt(75) + 1;
+            repetida = false;
+
+            for (int i = 0; i < quantidadeSorteada; i++){
+                if (pedrasSorteadas[i] == pedra) {
+                    repetida = true;
+                    break;
+                }
+            }
+        } while (repetida);
+
+        pedrasSorteadas[quantidadeSorteada] = pedra;
+        quantidadeSorteada++;
+
+        marcarNaCartela(pedra);
+
+        return pedra;
     }
 }
