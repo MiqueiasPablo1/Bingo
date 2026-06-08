@@ -4,8 +4,9 @@ import java.util.Random;
 
 public class Sorteador {
 
-    Jogador[] jogadores;
-    int[] pedrasSorteadas;
+    Jogador[] jogadores = new Jogador[45];
+    int[] pedrasSorteadas = new int[75];
+    int quantidadeSorteada = 0;
 
     public Sorteador (){
     }
