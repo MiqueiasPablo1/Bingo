@@ -3,7 +3,10 @@ package model.entities;
 public class Jogador {
 
     String nome;
-    Cartela cartela;
+    public Cartela cartela;
+
+    public Jogador() {
+    }
 
     public Jogador(String name, Cartela cartela) {
         this.nome = name;
@@ -12,7 +15,10 @@ public class Jogador {
 
     @Override
     public String toString () {
-        return "Jogador : " + nome;
+        return "Jogador : "
+        + nome
+        + "\n"
+        + cartela.toString();
     }
 
 }

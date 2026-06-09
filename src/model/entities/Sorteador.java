@@ -12,7 +12,7 @@ public class Sorteador {
     }
 
     public void verificarGanhador(){
-        
+
     }
 
     public void marcarNaCartela (int pedra) {
@@ -44,6 +44,7 @@ public class Sorteador {
     }
 
     public int sortearPedra(){
+
         Random random = new Random();
         int pedra;
         boolean repetida;

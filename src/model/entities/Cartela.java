@@ -7,10 +7,14 @@ public class Cartela {
 
     int codigo;
     int[][] numeros = new int[5][5];
+    boolean[][] marcados = new boolean[5][5];
 
     Random random = new Random();
     public static final String RESET = "\u001B[0m";
     public static final String AZUL = "\u001B[34m";
+
+    public Cartela() {
+    }
 
     public Cartela (int codigo) {
         this.codigo = codigo;
@@ -25,24 +29,15 @@ public class Cartela {
 
         for(int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
-                numeros[i][j] = random.nextInt(101);
+                numeros[i][j] = random.nextInt(75) + 1;
             }
         }
         return numeros;
     }
 
-    public void marcarNaCartela (int pedra) {
+    /*public String retornaLinhas () {
 
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (pedra == numeros[i][j]) {
-                    //ERROR // System.out.printf("%d\t ", AZUL + numeros[i][j] + RESET);
-                    //TEST
-                    //System.out.println(" * ");;
-                }
-            }
-        }
-    }
+    }*/
 
     @Override
     public String toString () {

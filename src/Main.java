@@ -10,9 +10,14 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int[][] array = new int[5][5];
         Sorteador sorteador = new Sorteador();
+        Cartela cartela = new Cartela();
+        Jogador jogador = new Jogador();
 
-        System.out.println(" Digite o nome do jogador: ");
-        String nome = scanner.nextLine();
+        int contador = 0;
+        String opcao;
+        do {
+            System.out.println(" Digite o nome do jogador: ");
+            String nome = scanner.nextLine();
 
             cartela = new Cartela(contador);
             cartela.gerarCartela(contador);
@@ -27,13 +32,28 @@ public class Main {
             contador++;
         } while (opcao.equals("S"));
 
-        System.out.println(cartela.toString());
-        cartela.marcarNaCartela(sorteador.sortearPedra());
-        System.out.println(cartela.toString());
+        sorteador.mostrarParticipantes();
 
-        /*
-        System.out.println(cartela.toString());
-        System.out.println(new Sorteador().sortearPedra());
-        */
+        contador = 0;
+        do {
+            System.out.println("Sorteie a pedra! (P) ");
+            char botaoSortear = scanner.next().toUpperCase().charAt(0);
+
+            if (botaoSortear == 'P') {
+                int pedra = sorteador.sortearPedra();
+                System.out.println("============================");
+                System.out.printf("         Pedra: %d         \n", pedra);
+                System.out.println("============================");
+            }
+            sorteador.mostrarParticipantes();
+
+            scanner.nextLine();
+            System.out.print("Deseja continuar(S/N)? ");
+            opcao = scanner.next().toUpperCase();
+            contador++;
+        } while (opcao.equals("S"));
+
+        sorteador.mostrarParticipantes();
+
     }
 }
