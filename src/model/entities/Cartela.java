@@ -1,6 +1,5 @@
 package model.entities;
 
-import java.util.IllegalFormatConversionException;
 import java.util.Random;
 
 public class Cartela {
