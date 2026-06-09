@@ -39,10 +39,6 @@ public class Cartela {
         return numeros;
     }
 
-    /*public String retornaLinhas () {
-
-    }*/
-
     @Override
     public String toString () {
 
