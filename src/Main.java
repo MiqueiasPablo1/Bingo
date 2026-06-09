@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        int[][] array = new int[5][5];
+        
         Sorteador sorteador = new Sorteador();
         Cartela cartela = new Cartela();
         Jogador jogador = new Jogador();
