@@ -24,11 +24,16 @@ public class Cartela {
         this.numeros = numeros;
     }
 
-    public int[][] gerarCartela(int codigo){
-
-        for(int i = 0; i < 5; i++) {
+    public int[][] gerarCartela(int codigo) {
+        boolean[] usados = new boolean[76];
+        for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
-                numeros[i][j] = random.nextInt(75) + 1;
+                int numero;
+                do {
+                    numero = random.nextInt(75) + 1;
+                } while (usados[numero]);
+                usados[numero] = true;
+                numeros[i][j] = numero;
             }
         }
         return numeros;
@@ -50,11 +55,10 @@ public class Cartela {
             for (int j = 0; j < 5; j++){
                 if (marcados[i][j]){
                     sb.append(AZUL)
-                    .append(String.format("%d\t", numeros[i][j]))
-                    .append(RESET);
-                    //sb.append(String.format("[%d]\t", numeros[i][j]));
-                }
-                else {
+                            .append(String.format("%d\t", numeros[i][j]))
+                            .append(RESET);
+                    // sb.append(String.format("[%d]\t", numeros[i][j]));
+                } else {
                     sb.append(String.format("%d\t", numeros[i][j]));
                 }
             }

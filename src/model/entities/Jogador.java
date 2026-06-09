@@ -14,11 +14,11 @@ public class Jogador {
     }
 
     @Override
-    public String toString () {
+    public String toString() {
         return "Jogador : "
-        + nome
-        + "\n"
-        + cartela.toString();
+                + nome
+                + "\n"
+                + cartela.toString();
     }
 
 }

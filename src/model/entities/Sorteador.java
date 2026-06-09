@@ -30,12 +30,73 @@ public class Sorteador {
         }
     }
 
-    public void mostrarParticipantes(){
-        for (Jogador i : jogadores) {
-            if (i != null) {
-                    System.out.print(i);
+    public void mostrarParticipantes() {
+        int count = 0;
+        for (int i = 0; i < jogadores.length; i++) {
+            if (jogadores[i] != null) {
+                count++;
+            }
+        }
+        if (count == 0) {
+            System.out.println("Nenhum jogador participando.");
+            return;
+        }
+
+        Jogador[] ativos = new Jogador[count];
+        int idx = 0;
+        for (int i = 0; i < jogadores.length; i++) {
+            if (jogadores[i] != null) {
+                ativos[idx] = jogadores[i];
+                idx++;
+            }
+        }
+
+        int limite = 4;
+        for (int start = 0; start < count; start += limite) {
+            int end = start + limite;
+            if (end > count) {
+                end = count;
             }
 
+            for (int linha = 0; linha < 8; linha++) {
+                for (int k = start; k < end; k++) {
+                    Jogador jogador = ativos[k];
+
+                    if (linha == 0) {
+                        System.out.printf("Jogador: %-9.9s", jogador.nome);
+                    } else if (linha == 1) {
+                        System.out.print("--- B I N G O ----");
+                    } else if (linha == 2) {
+                        System.out.printf("---- cod.: %-3d ----", jogador.cartela.codigo);
+                    } else {
+                        int mLinha = linha - 3;
+                        System.out.print("  ");
+                        for (int col = 0; col < 5; col++) {
+                            int num = jogador.cartela.numeros[mLinha][col];
+                            boolean marcado = jogador.cartela.marcados[mLinha][col];
+
+                            if (marcado) {
+                                System.out.print(Cartela.AZUL);
+                                System.out.printf("%2d", num);
+                                System.out.print(Cartela.RESET);
+                            } else {
+                                System.out.printf("%2d", num);
+                            }
+
+                            if (col < 4) {
+                                System.out.print(" ");
+                            }
+                        }
+                        System.out.print("  ");
+                    }
+
+                    if (k < end - 1) {
+                        System.out.print("  |  ");
+                    }
+                }
+                System.out.println();
+            }
+            System.out.println();
         }
     }
 
