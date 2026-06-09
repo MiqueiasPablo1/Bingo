@@ -24,7 +24,7 @@ public class Cartela {
         this.numeros = numeros;
     }
 
-    public int[][] gerarCartela(int codigo) {
+    public int[][] gerarCartela() {
         boolean[] usados = new boolean[76];
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {

@@ -11,10 +11,6 @@ public class Sorteador {
     public Sorteador (){
     }
 
-    public void verificarGanhador(){
-
-    }
-
     public void marcarNaCartela (int pedra) {
 
         for (int k = 0 ; k < jogadores.length; k++) {

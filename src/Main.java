@@ -20,7 +20,7 @@ public class Main {
             String nome = scanner.nextLine();
 
             cartela = new Cartela(contador);
-            cartela.gerarCartela(contador);
+            cartela.gerarCartela();
             jogador = new Jogador(nome, cartela);
             sorteador.adicionarJogador(jogador, contador);
 
