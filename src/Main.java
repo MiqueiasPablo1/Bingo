@@ -10,8 +10,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         
         Sorteador sorteador = new Sorteador();
-        Cartela cartela = new Cartela();
-        Jogador jogador = new Jogador();
+        Cartela cartela;
+        Jogador jogador;
 
         int contador = 0;
         String opcao;
