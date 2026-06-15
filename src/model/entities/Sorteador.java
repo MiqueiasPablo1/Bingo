@@ -1,93 +1,53 @@
 package model.entities;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Sorteador {
 
-    Jogador[] jogadores = new Jogador[45];
+    Jogador[] jogadores;
     int[] pedrasSorteadas = new int[75];
     int quantidadeSorteada = 0;
 
-    public Sorteador (){
+    public Sorteador (int total){
+        this.jogadores= new Jogador[total];
     }
 
-    public void marcarNaCartela (int pedra) {
+    public void marcarNaCartela(int pedra) {
 
-        for (int k = 0 ; k < jogadores.length; k++) {
-            for (int i = 0; i < 5; i++) {
-                for (int j = 0; j < 5; j++) {
-                   if (jogadores[k] != null) {
-                       if (jogadores[k].cartela.numeros[i][j] == pedra) {
-                           jogadores[k].cartela.marcados[i][j] = true;
+        for (int h =0;h< jogadores.length;h++){
+            for(int i = 0;i<5;i++){
+                for(int j = 0;j<5;j++){
+                    if(jogadores[h].cartela[i][j]== pedra){
+                        jogadores[h].marcados[i][j]= true;
+                        jogadores[h].marcador++;
+
                        }
                    }
                 }
             }
         }
-    }
+
 
     public void mostrarParticipantes() {
-        int count = 0;
-        for (int i = 0; i < jogadores.length; i++) {
-            if (jogadores[i] != null) {
-                count++;
-            }
-        }
-        if (count == 0) {
-            System.out.println("Nenhum jogador participando.");
-            return;
-        }
-
-        Jogador[] ativos = new Jogador[count];
-        int idx = 0;
-        for (int i = 0; i < jogadores.length; i++) {
-            if (jogadores[i] != null) {
-                ativos[idx] = jogadores[i];
-                idx++;
-            }
-        }
-
         int limite = 4;
-        for (int start = 0; start < count; start += limite) {
-            int end = start + limite;
-            if (end > count) {
-                end = count;
+        for (int inicio = 0; inicio < jogadores.length; inicio += limite) {
+
+            int fim = inicio + limite;
+
+            if (fim > jogadores.length) {
+                fim = jogadores.length;
             }
+            for (int linha = 0; linha < 9; linha++) {
 
-            for (int linha = 0; linha < 8; linha++) {
-                for (int k = start; k < end; k++) {
-                    Jogador jogador = ativos[k];
+                for (int j = inicio; j < fim; j++) {
+                    if (jogadores[j] != null) {
 
-                    if (linha == 0) {
-                        System.out.printf("Jogador: %-9.9s", jogador.nome);
-                    } else if (linha == 1) {
-                        System.out.print("--- B I N G O ----");
-                    } else if (linha == 2) {
-                        System.out.printf("---- cod.: %-3d ----", jogador.cartela.codigo);
-                    } else {
-                        int mLinha = linha - 3;
-                        System.out.print("  ");
-                        for (int col = 0; col < 5; col++) {
-                            int num = jogador.cartela.numeros[mLinha][col];
-                            boolean marcado = jogador.cartela.marcados[mLinha][col];
+                        jogadores[j].exibirLinha(linha);
 
-                            if (marcado) {
-                                System.out.print(Cartela.AZUL);
-                                System.out.printf("%2d", num);
-                                System.out.print(Cartela.RESET);
-                            } else {
-                                System.out.printf("%2d", num);
-                            }
-
-                            if (col < 4) {
-                                System.out.print(" ");
-                            }
+                        if (j < fim - 1) {
+                            System.out.print(" | ");
                         }
-                        System.out.print("  ");
-                    }
-
-                    if (k < end - 1) {
-                        System.out.print("  |  ");
                     }
                 }
                 System.out.println();
@@ -96,8 +56,20 @@ public class Sorteador {
         }
     }
 
-    public void adicionarJogador (Jogador jogador, int contador) {
-        jogadores[contador] = jogador;
+    public void adicionarJogador (int cod) {
+        Scanner input = new Scanner(System.in);
+        for(int i =0;i<jogadores.length;i++ ){
+
+            System.out.printf("Jogador %d: \n",i+1);
+            System.out.println("Nome do jogador: ");
+            
+            String nome = input.nextLine();
+
+
+            jogadores[i]= new Jogador(nome,cod);
+            cod++;
+
+        }
     }
 
     public int sortearPedra(){
@@ -121,8 +93,29 @@ public class Sorteador {
         pedrasSorteadas[quantidadeSorteada] = pedra;
         quantidadeSorteada++;
 
-        marcarNaCartela(pedra);
-
         return pedra;
     }
-}
+
+    public void iniciarJogo(){
+
+        Scanner input = new Scanner(System.in);
+
+        while(true){
+
+            System.out.print("\nPressione ENTER para chamar a próxima pedra...");
+            input.nextLine();
+
+            int pedra = sortearPedra();
+
+            System.out.println("\nPedra sorteada: " + pedra);
+            System.out.println("\nPedras chamadas " + quantidadeSorteada );
+
+            marcarNaCartela(pedra);
+
+            mostrarParticipantes();
+
+            }
+        }
+    }
+
+

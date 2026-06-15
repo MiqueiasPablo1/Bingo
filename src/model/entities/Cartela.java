@@ -4,62 +4,35 @@ import java.util.Random;
 
 public class Cartela {
 
-    int codigo;
     int[][] numeros = new int[5][5];
-    boolean[][] marcados = new boolean[5][5];
+
 
     Random random = new Random();
-    public static final String RESET = "\u001B[0m";
-    public static final String AZUL = "\u001B[34m";
-
-    public Cartela() {
-    }
-
-    public Cartela (int codigo) {
-        this.codigo = codigo;
-    }
-
-    public Cartela (int codigo, int[][] numeros) {
-        this.codigo = codigo;
-        this.numeros = numeros;
-    }
 
     public int[][] gerarCartela() {
-        boolean[] usados = new boolean[76];
+
+        int[] min = {1, 15, 31, 46, 61};
+        int[] max = {15, 30, 45, 60, 75};
+        int sorteado;
+        boolean repetido;
+
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
-                int numero;
+
                 do {
-                    numero = random.nextInt(75) + 1;
-                } while (usados[numero]);
-                usados[numero] = true;
-                numeros[i][j] = numero;
+                    sorteado = random.nextInt(min[i], max[i] + 1);
+                    repetido = false;
+                    for (int k = 0; k < j; k++) {
+                        if (sorteado == numeros[k][i]) {
+                            repetido = true;
+                        }
+                    }
+                } while (repetido);
+                numeros[j][i] = sorteado;
             }
         }
         return numeros;
     }
-
-    @Override
-    public String toString () {
-
-        StringBuilder sb = new StringBuilder();
-
-        sb.append(" ==== B I N G O ==== \n");
-        sb.append(String.format(" == cod.: %d= \n", codigo));
-
-        for (int i = 0; i < 5; i++){
-            for (int j = 0; j < 5; j++){
-                if (marcados[i][j]){
-                    sb.append(AZUL)
-                            .append(String.format("%d\t", numeros[i][j]))
-                            .append(RESET);
-                    // sb.append(String.format("[%d]\t", numeros[i][j]));
-                } else {
-                    sb.append(String.format("%d\t", numeros[i][j]));
-                }
-            }
-            sb.append("\n");
-        }
-        return sb.toString();
-    }
 }
+
+

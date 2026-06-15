@@ -7,53 +7,38 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-        
-        Sorteador sorteador = new Sorteador();
-        Cartela cartela;
-        Jogador jogador;
+    Scanner input = new Scanner(System.in);
 
-        int contador = 0;
-        String opcao;
-        do {
-            System.out.println(" Digite o nome do jogador: ");
-            String nome = scanner.nextLine();
+    int quantidadeJogadores = 0;
 
-            cartela = new Cartela(contador);
-            cartela.gerarCartela();
-            jogador = new Jogador(nome, cartela);
-            sorteador.adicionarJogador(jogador, contador);
+    while (quantidadeJogadores < 1 || quantidadeJogadores > 8) {
+        System.out.print("==== BINGÃO DA GALERA ====\n");
+        System.out.print("Patrocinado por :\nJP\nLucas\nLuís\nMiqueias\n1°PRÊMIO: 0,5 ponto em LP2 \n" +
+                "2°PRÊMIO:um Guiné  \n");
 
-            System.out.println("JOGADOR REGISTRADO E CARTELA CRIADA! ");
 
-            System.out.print("Há mais jogadores participantes (S/N)? ");
-            opcao = scanner.nextLine().toUpperCase();
+        System.out.print("Quantidade de jogadores (máximo 8): ");
 
-            contador++;
-        } while (opcao.equals("S"));
+        quantidadeJogadores = input.nextInt();
 
-        sorteador.mostrarParticipantes();
+        if (quantidadeJogadores > 8) {
+            System.out.println("Capacidade excedida! Máximo de 8 jogadores.\n");
+        }
 
-        contador = 0;
-        do {
-            System.out.println("Sorteie a pedra! (P) ");
-            char botaoSortear = scanner.next().toUpperCase().charAt(0);
-
-            if (botaoSortear == 'P') {
-                int pedra = sorteador.sortearPedra();
-                System.out.println("============================");
-                System.out.printf("         Pedra: %d         \n", pedra);
-                System.out.println("============================");
-            }
-            sorteador.mostrarParticipantes();
-
-            scanner.nextLine();
-            System.out.print("Deseja continuar(S/N)? ");
-            opcao = scanner.next().toUpperCase();
-            contador++;
-        } while (opcao.equals("S"));
-
-        sorteador.mostrarParticipantes();
-
+        else if (quantidadeJogadores < 1) {
+            System.out.println("Quantidade inválida!\n");
+        }
     }
+
+    Sorteador jogo = new Sorteador(quantidadeJogadores);
+    int cod =1;
+
+    jogo.adicionarJogador(cod);
+    jogo.mostrarParticipantes();
+
+    jogo.iniciarJogo();
+
+    input.close();
+
+}
 }
