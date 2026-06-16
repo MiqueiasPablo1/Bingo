@@ -44,7 +44,9 @@ public class Sorteador {
 
                 for (int j = inicio; j < fim; j++) {
                     if (jogadores[j] != null) {
+
                         jogadores[j].exibirLinha(linha);
+
                         if (j < fim - 1) {
                             System.out.print(" | ");
                         }
@@ -58,13 +60,6 @@ public class Sorteador {
    public  void mostrarCartelas(){
         for(int i =0;i< jogadores.length;i++){
             System.out.println(jogadores[i]);
-            for (int j = 0;j < 5; j++) {
-                for (int k = 0; k < 5; k ++) {
-                    System.out.print(jogadores[i].cartela[j][k] + " ");
-                }
-                System.out.println();
-
-            }
         }
     }
 
