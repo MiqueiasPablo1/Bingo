@@ -38,7 +38,8 @@ public class Sorteador {
         }
     }
 
-    public void adicionarJogador(int cod) {
+    public void adicionarJogador() {
+        int cod = 1;
         for (int i = 0; i < jogadores.length; i++) {
             System.out.printf("Jogador %d: \n", i + 1);
             System.out.println("Nome do jogador: ");

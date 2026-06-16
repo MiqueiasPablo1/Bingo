@@ -32,7 +32,7 @@ public class Main {
 
         Sorteador sorteador = new Sorteador(quantidadeJogadores);
 
-        sorteador.adicionarJogador(1);
+        sorteador.adicionarJogador();
         sorteador.mostrarCartelas();
         sorteador.iniciarJogo();
     }
