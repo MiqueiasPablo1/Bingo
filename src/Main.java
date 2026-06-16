@@ -17,17 +17,22 @@ public class Main {
                 "2°PRÊMIO:um Guiné  \n");
 
 
-        System.out.print("Quantidade de jogadores (máximo 8): ");
+        System.out.print("Quantidade de jogadores (máximo 8): \n");
+        if(input.hasNextInt()){
+            quantidadeJogadores = input.nextInt();
 
-        quantidadeJogadores = input.nextInt();
+            if (quantidadeJogadores > 8) {
+                System.out.println("Capacidade excedida! Máximo de 8 jogadores.\n");
+            }
 
-        if (quantidadeJogadores > 8) {
-            System.out.println("Capacidade excedida! Máximo de 8 jogadores.\n");
+            else if (quantidadeJogadores < 1) {
+                System.out.println("Quantidade inválida!\n");
+            }
+        }else{
+            System.out.println("Digite apenas valores inteiros !\n");
+            input.next();
         }
-
-        else if (quantidadeJogadores < 1) {
-            System.out.println("Quantidade inválida!\n");
-        }
+        
     }
 
     Sorteador jogo = new Sorteador(quantidadeJogadores);
