@@ -11,7 +11,7 @@ public class Cartela {
 
     public int[][] gerarCartela() {
 
-        int[] min = {1, 15, 31, 46, 61};
+        int[] min = {1, 16, 31, 46, 61};
         int[] max = {15, 30, 45, 60, 75};
         int sorteado;
         boolean repetido;

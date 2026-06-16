@@ -1,5 +1,4 @@
-import model.entities.Cartela;
-import model.entities.Jogador;
+
 import model.entities.Sorteador;
 
 import java.util.Scanner;
@@ -32,14 +31,15 @@ public class Main {
             System.out.println("Digite apenas valores inteiros !\n");
             input.next();
         }
-        
+
+
     }
 
     Sorteador jogo = new Sorteador(quantidadeJogadores);
     int cod =1;
 
     jogo.adicionarJogador(cod);
-    jogo.mostrarParticipantes();
+    jogo.mostrarCartelas();
 
     jogo.iniciarJogo();
 

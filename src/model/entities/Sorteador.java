@@ -29,6 +29,8 @@ public class Sorteador {
         }
 
 
+
+
     public void mostrarParticipantes() {
         int limite = 4;
         for (int inicio = 0; inicio < jogadores.length; inicio += limite) {
@@ -53,6 +55,11 @@ public class Sorteador {
                 System.out.println();
             }
             System.out.println();
+        }
+    }
+   public  void mostrarCartelas(){
+        for(int i =0;i< jogadores.length;i++){
+            System.out.println(jogadores[i]);
         }
     }
 
@@ -95,6 +102,8 @@ public class Sorteador {
 
         return pedra;
     }
+
+
 
     public void iniciarJogo(){
 

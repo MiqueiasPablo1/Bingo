@@ -65,4 +65,24 @@ public class Jogador {
         }
     }
 
+    @Override
+    public String toString() {
+
+        String texto = "";
+
+        texto += "==== B I N G O ====\n";
+        texto += "Código: 000" + codigo + "\n";
+        texto += "Jogador: " + nome + "\n";
+        texto += "Marcadas: " + marcador + "\n";
+
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                texto += cartela[i][j] + " ";
+            }
+            texto += "\n";
+        }
+
+        return texto;
+    }
+
 }
