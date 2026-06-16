@@ -65,9 +65,16 @@ public class Jogador {
         }
     }
 
+    public boolean temBingo() {
+        return marcador == 25;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
     @Override
     public String toString() {
-
         String texto = "";
 
         texto += "==== B I N G O ====\n";

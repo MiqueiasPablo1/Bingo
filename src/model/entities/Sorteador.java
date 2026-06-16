@@ -8,9 +8,10 @@ public class Sorteador {
     Jogador[] jogadores;
     int[] pedrasSorteadas = new int[75];
     int quantidadeSorteada = 0;
+    Scanner input = new Scanner(System.in);
 
-    public Sorteador (int total){
-        this.jogadores= new Jogador[total];
+    public Sorteador(int total) {
+        this.jogadores = new Jogador[total];
     }
 
     public void marcarNaCartela(int pedra) {
@@ -63,19 +64,15 @@ public class Sorteador {
         }
     }
 
-    public void adicionarJogador (int cod) {
-        Scanner input = new Scanner(System.in);
-        for(int i =0;i<jogadores.length;i++ ){
-
-            System.out.printf("Jogador %d: \n",i+1);
+    public void adicionarJogador(int cod) {
+        for (int i = 0; i < jogadores.length; i++) {
+            System.out.printf("Jogador %d: \n", i + 1);
             System.out.println("Nome do jogador: ");
-            
+
             String nome = input.nextLine();
 
-
-            jogadores[i]= new Jogador(nome,cod);
+            jogadores[i] = new Jogador(nome, cod);
             cod++;
-
         }
     }
 
@@ -105,26 +102,36 @@ public class Sorteador {
 
 
 
-    public void iniciarJogo(){
+    public Jogador verificarVencedor() {
+        for (Jogador j : jogadores) {
+            if (j != null && j.temBingo()) {
+                return j;
+            }
+        }
+        return null;
+    }
 
-        Scanner input = new Scanner(System.in);
-
-        while(true){
-
+    public void iniciarJogo() {
+        while (true) {
             System.out.print("\nPressione ENTER para chamar a próxima pedra...");
             input.nextLine();
 
             int pedra = sortearPedra();
 
             System.out.println("\nPedra sorteada: " + pedra);
-            System.out.println("\nPedras chamadas " + quantidadeSorteada );
+            System.out.println("Pedras chamadas: " + quantidadeSorteada);
 
             marcarNaCartela(pedra);
-
             mostrarParticipantes();
 
+            Jogador vencedor = verificarVencedor();
+            if (vencedor != null) {
+                System.out.println("\n*** BINGO! " + vencedor.getNome() + " venceu! ***");
+                input.close();
+                return;
             }
         }
     }
+}
 
 

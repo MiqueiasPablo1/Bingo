@@ -6,42 +6,36 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-    Scanner input = new Scanner(System.in);
+        int quantidadeJogadores = 0;
 
-    int quantidadeJogadores = 0;
+        Scanner sc = new Scanner(System.in);
 
-    while (quantidadeJogadores < 1 || quantidadeJogadores > 8) {
-        System.out.println("BINGÃO DA GALERA");
+        while (quantidadeJogadores < 1 || quantidadeJogadores > 8) {
+            System.out.println("BINGÃO DA GALERA");
+            System.out.print("Quantidade de jogadores (máximo 8): \n");
 
+            if (sc.hasNextInt()) {
+                quantidadeJogadores = sc.nextInt();
+                sc.nextLine();
 
-        System.out.print("Quantidade de jogadores (máximo 8): \n");
-        if(input.hasNextInt()){
-            quantidadeJogadores = input.nextInt();
-
-            if (quantidadeJogadores > 8) {
-                System.out.println("Capacidade excedida! Máximo de 8 jogadores.\n");
+                if (quantidadeJogadores > 8) {
+                    System.out.println("Capacidade excedida! Máximo de 8 jogadores.\n");
+                    quantidadeJogadores = 0;
+                } else if (quantidadeJogadores < 1) {
+                    System.out.println("Quantidade inválida!\n");
+                }
+            } else {
+                System.out.println("Digite apenas valores inteiros!\n");
+                sc.next();
             }
-
-            else if (quantidadeJogadores < 1) {
-                System.out.println("Quantidade inválida!\n");
-            }
-        }else{
-            System.out.println("Digite apenas valores inteiros !\n");
-            input.next();
         }
 
+        sc.close();
 
+        Sorteador sorteador = new Sorteador(quantidadeJogadores);
+
+        sorteador.adicionarJogador(1);
+        sorteador.mostrarCartelas();
+        sorteador.iniciarJogo();
     }
-
-    Sorteador jogo = new Sorteador(quantidadeJogadores);
-    int cod =1;
-
-    jogo.adicionarJogador(cod);
-    jogo.mostrarCartelas();
-
-    jogo.iniciarJogo();
-
-    input.close();
-
-}
 }
