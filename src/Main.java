@@ -30,8 +30,6 @@ public class Main {
             }
         }
 
-        sc.close();
-
         Sorteador sorteador = new Sorteador(quantidadeJogadores);
 
         sorteador.adicionarJogador(1);
