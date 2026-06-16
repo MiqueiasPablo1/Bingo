@@ -11,9 +11,7 @@ public class Main {
     int quantidadeJogadores = 0;
 
     while (quantidadeJogadores < 1 || quantidadeJogadores > 8) {
-        System.out.print("==== BINGÃO DA GALERA ====\n");
-        System.out.print("Patrocinado por :\nJP\nLucas\nLuís\nMiqueias\n1°PRÊMIO: 0,5 ponto em LP2 \n" +
-                "2°PRÊMIO:um Guiné  \n");
+        System.out.println("BINGÃO DA GALERA");
 
 
         System.out.print("Quantidade de jogadores (máximo 8): \n");
